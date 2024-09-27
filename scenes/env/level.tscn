@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cihe4u83dlk4c"]
+
+[ext_resource type="PackedScene" uid="uid://dojd7diqlxtup" path="res://scenes/essense/player.tscn" id="1_0d5lu"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_0d5lu")]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 64, 256, 64, 256, 48, 248, 48, 248, 56, 0, 56)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-128, -128, -64, -128, -64, -120, -96, -120, -96, 64, -104, 64, -104, -120, -128, -120)
