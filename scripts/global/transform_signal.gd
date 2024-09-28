@@ -5,9 +5,11 @@ signal hit_to_body(canHit: bool)
 var need_player_exp = 20
 var player_exp: int
 var game_paused: bool = false
-var count_ball = 5
-var ball_rotate_velocity = 5
+var count_ball = 0
+
 var player_p:Vector2
+var cross_p:Vector2
+var attackdir:float
 var inner_canHit
 var damage_cooldown: float = 0.1
 var time_since_last_damage: float = 2.5

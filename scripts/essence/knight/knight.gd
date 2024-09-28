@@ -101,10 +101,6 @@ func damage_state():
 		state = DEATH
 	state = WALK
 
-
-
-	
-	
 		
 func hit():
 	player.health-=1
