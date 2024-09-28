@@ -1,13 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cihe4u83dlk4c"]
+[gd_scene load_steps=5 format=3 uid="uid://cihe4u83dlk4c"]
 
 [ext_resource type="PackedScene" uid="uid://dojd7diqlxtup" path="res://scenes/essense/player.tscn" id="1_0d5lu"]
+[ext_resource type="Script" path="res://scripts/global/env/level.gd" id="1_us46j"]
+[ext_resource type="PackedScene" uid="uid://bjnckpirt1bls" path="res://scenes/UI/lvl_up.tscn" id="3_5d8cs"]
+[ext_resource type="Script" path="res://scenes/env/manager.gd" id="3_cemnr"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_us46j")
 
 [node name="Player" parent="." instance=ExtResource("1_0d5lu")]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(0, 64, 256, 64, 256, 48, 248, 48, 248, 56, 0, 56)
 
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+color = Color(1, 0.054902, 1, 1)
+polygon = PackedVector2Array(768, -448, -2880, -448, -2880, 1920, 768, 1920, 768, 1912, 776, 1912, 776, 1920, 776, 1928, -2888, 1928, -2888, -456, 776, -456, 776, 1904, 768, 1904)
+
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-128, -128, -64, -128, -64, -120, -96, -120, -96, 64, -104, 64, -104, -120, -128, -120)
+
+[node name="manager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("3_cemnr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="manager"]
+offset = Vector2(550, 300)
+transform = Transform2D(1, 0, 0, 1, 550, 300)
+
+[node name="Lvl_up" parent="manager/CanvasLayer" instance=ExtResource("3_5d8cs")]
+process_mode = 2

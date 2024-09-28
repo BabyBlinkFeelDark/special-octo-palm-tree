@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjnckpirt1bls"]
+
+[ext_resource type="Script" path="res://scripts/global/UI/lvl_up.gd" id="1_n7jgf"]
+
+[node name="Lvl_up" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n7jgf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 221.0
+offset_bottom = 89.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 216.0
+offset_bottom = 84.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "first"
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "second"
+
+[node name="Button3" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "trird"
+
+[connection signal="pressed" from="Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfxdthsy50vto"]
+
+[ext_resource type="Texture2D" uid="uid://dswbjwbyq8h5p" path="res://textures/env/loot/exp_point.png" id="1_0uss8"]
+[ext_resource type="Script" path="res://scripts/global/env/exp_point.gd" id="1_t4xv7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hnfw"]
+radius = 5.0
+
+[node name="Exp_point" type="Node2D"]
+script = ExtResource("1_t4xv7")
+
+[node name="ExpPoint" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0uss8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3hnfw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
