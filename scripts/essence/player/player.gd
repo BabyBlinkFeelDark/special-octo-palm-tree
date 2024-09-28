@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	emit_xp = exp
 	TransformSignal.player_p = position
 	TransformSignal.emit_signal("player_position_update", player_pos)
-	print(TransformSignal.count_ball)
+	
 	match state:
 		WALK:
 			walk_state(delta)
@@ -96,7 +96,6 @@ func death_state():
 		#get_tree(). change_scene_to_file("res://scene/menu.tscn")
 		
 func spawn_ball():
-
 	if TransformSignal.count_ball < 1:
 		rotaion_offset = 0
 	else:
@@ -110,6 +109,6 @@ func spawn_ball():
 		add_child(ball)
 		inst_ball+=1
 	for cast in attacks:
-		cast.rotation_degrees+=1
+		cast.rotation_degrees+=TransformSignal.ball_rotate_velocity
 	for i in range(1,len(attacks)):
 		attacks[i].rotation_degrees= attacks[i-1].rotation_degrees + rotaion_offset
