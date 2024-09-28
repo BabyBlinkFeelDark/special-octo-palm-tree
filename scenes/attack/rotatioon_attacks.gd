@@ -11,7 +11,7 @@ var rotaion_offset
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	inst_ball = TransformSignal.count_ball
+	
 	TransformSignal.connect("player_position_update", Callable(self, "_on_player_positiont_update"))
 	pass # Replace with function body.
 

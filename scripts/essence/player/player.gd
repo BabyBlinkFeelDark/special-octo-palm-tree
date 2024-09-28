@@ -1,18 +1,11 @@
 extends CharacterBody2D
 class_name Player
+
+
 enum {
 	WALK,
 	DEATH
 }
-
-
-
-const BALL_SCENE = preload("res://scenes/attack/fire_ball.tscn")
-var inst_ball = 0
-var angle_to_rotate: int = 0
-var player: Vector2
-var attacks = []
-var rotaion_offset
 
 
 const SPEED = 150.0
@@ -23,22 +16,23 @@ var exp: int = 0
 var emit_xp: int
 var state = WALK
 var player_pos: Vector2
+var player: Vector2
+var fire_ball: MagickAttacks
 
-
-
-
+func _ready() -> void:
+	pass
 		
 func _physics_process(delta: float) -> void:
+
 	if Input.is_action_just_pressed("ui_accept"):
 		TransformSignal.player_exp+=20
-	if TransformSignal.count_ball!=0:
-		spawn_ball()
+
 		#print(attacks)
 
 	emit_xp = exp
-	TransformSignal.player_p = position
+	
 	TransformSignal.emit_signal("player_position_update", player_pos)
-	print(TransformSignal.count_ball)
+	
 	match state:
 		WALK:
 			walk_state(delta)
@@ -48,6 +42,8 @@ func _physics_process(delta: float) -> void:
 	
 
 func walk_state(vel_del):
+	TransformSignal.player_p = position
+
 	var direction : Vector2
 	direction.x = Input.get_axis("left", "right")
 	direction.y = Input.get_axis("up", "down")
@@ -95,21 +91,3 @@ func death_state():
 		#queue_free()
 		#get_tree(). change_scene_to_file("res://scene/menu.tscn")
 		
-func spawn_ball():
-
-	if TransformSignal.count_ball < 1:
-		rotaion_offset = 0
-	else:
-		rotaion_offset = 360/TransformSignal.count_ball
-	while inst_ball != TransformSignal.count_ball:
-		var ball = BALL_SCENE.instantiate()
-		attacks.append(ball)
-		ball.position = player
-		ball.rotation_degrees = angle_to_rotate
-		angle_to_rotate += rotaion_offset
-		add_child(ball)
-		inst_ball+=1
-	for cast in attacks:
-		cast.rotation_degrees+=1
-	for i in range(1,len(attacks)):
-		attacks[i].rotation_degrees= attacks[i-1].rotation_degrees + rotaion_offset

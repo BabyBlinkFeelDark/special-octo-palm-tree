@@ -1,10 +1,13 @@
-[gd_scene load_steps=72 format=3 uid="uid://dojd7diqlxtup"]
+[gd_scene load_steps=75 format=3 uid="uid://dojd7diqlxtup"]
 
 [ext_resource type="Script" path="res://scripts/essence/player/player.gd" id="1_6c7pj"]
 [ext_resource type="Texture2D" uid="uid://dr04ndkymq2ea" path="res://textures/player/idle/idle.png" id="1_bwc1o"]
 [ext_resource type="Texture2D" uid="uid://brkl72c0v2jtg" path="res://textures/player/walk/walk.png" id="2_0ycb5"]
 [ext_resource type="PackedScene" uid="uid://dv8y7q7rv5qyu" path="res://scenes/attack/rotatioon_attacks.tscn" id="2_v6dn4"]
 [ext_resource type="Texture2D" uid="uid://c0hbg2lvyb0mp" path="res://textures/player/death/death_normal.png" id="2_ynpj3"]
+[ext_resource type="Script" path="res://scenes/UI/attackdir.gd" id="6_icow4"]
+[ext_resource type="Script" path="res://scenes/UI/cross.gd" id="7_k6yol"]
+[ext_resource type="Texture2D" uid="uid://drjxk0hfcbjk7" path="res://textures/env/UI/panel-025.png" id="7_pth4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4e1k"]
 size = Vector2(7, 16)
@@ -667,3 +670,16 @@ zoom = Vector2(3, 3)
 libraries = {
 "": SubResource("AnimationLibrary_p1dws")
 }
+
+[node name="attackdir" type="Node2D" parent="."]
+visible = false
+script = ExtResource("6_icow4")
+
+[node name="Marker2D" type="Marker2D" parent="attackdir"]
+position = Vector2(28, 0)
+script = ExtResource("7_k6yol")
+
+[node name="Panel-025" type="Sprite2D" parent="attackdir/Marker2D"]
+modulate = Color(1, 1, 1, 0.2)
+scale = Vector2(0.208333, 0.208333)
+texture = ExtResource("7_pth4k")

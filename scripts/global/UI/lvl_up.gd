@@ -1,16 +1,6 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
+#Отработка логики выбора улучшения
 func _on_button_pressed() -> void:
 	TransformSignal.count_ball+=1
 	TransformSignal.game_paused=false
